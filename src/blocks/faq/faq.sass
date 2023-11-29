@@ -1,0 +1,65 @@
+.accordion
+
+  &__container
+    overflow: hidden
+
+  &__list
+    list-style-type: none
+    display: flex
+    flex-direction: column
+
+  &__item
+    padding: 12px 0
+    border-bottom: 2px solid #E0E0E0
+    @media (max-width: $width-mobile)
+      padding: 12px 10px
+    &.js-accordion-active .accordion__content
+      max-height: 500px
+      padding: 16px 16px
+      @media (max-width: $width-mobile)
+        padding: 8px
+
+    &.js-accordion-active .accordion__title,
+    &:hover .accordion__title
+      //color: #fff
+    &.js-accordion-active .accordion__title::after
+      transform: rotate(-90deg)
+
+
+
+  &__title
+    @include fontSize(16, 24)
+    position: relative
+    display: flex
+    align-items: center
+    justify-content: space-between
+    column-gap: 20px
+    cursor: pointer
+    font-weight: 500
+    &::after
+      content: ""
+      display: inline-block
+      background-image: url('../img/icons/accord-arrow.svg')
+      background-repeat: no-repeat
+      background-size: cover
+      background-position: center
+      width: 20px
+      height: 10px
+      transition: 0.3s
+      flex: 0 0 20px
+      @media (max-width: $width-mobile)
+        width: 14px
+        height: 7px
+        flex: 0 0 14px
+
+
+  &__content
+    @include fontSize(14, 20)
+    overflow: hidden
+    max-height: 0
+    padding: 0 16px
+    transition: 0.5s
+    @media (max-width: $width-mobile)
+      padding: 0 8px
+    &-link
+      color: $accent

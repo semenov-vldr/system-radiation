@@ -1,0 +1,33 @@
+.hero
+  min-height: 90vh
+  height: 100%
+  padding: 64px 0
+  background-color: lightgrey
+
+  &__title
+    font-family: "RussoOne", sans-serif
+    @include fontSize(40, 64)
+    margin-bottom: 24px
+  &__text
+    margin-bottom: 64px
+    @include fontSize(14, 20)
+    max-width: 50%
+    @media (max-width: $width-mobile)
+      margin-bottom: 48px
+      max-width: initial
+
+  &__button
+    display: inline-block
+    padding: 20px 96px
+    @include fontSize(20, 24)
+    min-height: 56px
+    background-color: #525252
+    font-weight: 500
+    color: $white
+    @media (max-width: $width-mobile)
+      width: 100%
+      text-align: center
+      padding: 16px 24px
+      min-height: 48px
+
+

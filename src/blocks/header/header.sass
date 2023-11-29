@@ -1,0 +1,125 @@
+.header
+  position: sticky
+  top: 0
+  left: 0
+  width: 100%
+  z-index: 5
+  padding: 22px 0
+  min-height: 35px
+  background-color: $white
+  transition: 0.4s ease
+  &.js-scroll
+    transform: translateY(-100%)
+  &.js-menu-open
+    z-index: 6
+  @media (max-width: $width-mobile)
+    min-height: 50px
+    padding: 12px 0
+    font-size: 20px
+
+
+  &__container
+    display: flex
+    align-items: center
+    gap: 52px
+    @media (max-width: $width-mobile)
+      gap: 16px
+
+  &__logo
+    display: flex
+    font-weight: 500
+    padding: 2px 6px
+    border-radius: 4px
+    white-space: nowrap
+    font-size: 32px
+    @media (max-width: $width-mobile)
+      font-size: 24px
+  //img
+  //  width: 200px
+  //  @media (max-width: $width-tablet)
+  //    width: 150px
+  //  @media (max-width: 900px)
+  //    width: 120px
+
+  &__nav
+    @media (max-width: $width-mobile)
+      overflow: initial
+      position: fixed
+      top: 0
+      left: 0
+      max-height: 100vh
+      min-height: 500px
+      height: 100%
+      width: 100%
+      background-color: $white
+      padding: 52px 16px
+      transform: translateY(-100%)
+      transition: $transition
+      z-index: 1
+      background-image: url('../img/hero-desktop.jpg')
+      background-position: center
+      background-size: cover
+      background-repeat: no-repeat
+      font-weight: 500
+      &::after
+        content: ""
+        position: absolute
+        width: 100%
+        height: 100%
+        top: 0
+        left: 0
+        background-color: rgba(#fff, 0.8)
+      &::before
+        content: ""
+        position: absolute
+        bottom: 20px
+        left: 0
+        right: 0
+        margin: 0 auto
+        width: 25%
+        height: 5px
+        border-radius: 5px
+        background-color: rgba($black, 0.5)
+      &.js-menu-open
+        transform: translateY(0)
+      &.js-menu-open .header__nav-close
+        display: block
+
+  &__nav-list
+    position: relative
+    display: flex
+    align-items: center
+    gap: 32px
+    z-index: 1
+    @media (max-width: $width-tablet)
+      gap: 24px
+    @media (max-width: $width-mobile)
+      flex-direction: column
+      align-items: flex-start
+
+  &__nav-item
+    white-space: nowrap
+    transition: $transition
+    &--desktop-hidden
+      display: none
+      @media (max-width: $width-mobile)
+        display: block
+
+  &__tel
+    margin-left: auto
+    white-space: nowrap
+    font-weight: 700
+    @media (max-width: $width-mobile)
+      font-size: 16px
+
+  &__burger
+    display: none
+    @media (max-width: $width-mobile)
+      display: block
+
+  &__nav-close
+    display: none
+    position: absolute
+    right: 16px
+    top: 16px
+    z-index: 1
