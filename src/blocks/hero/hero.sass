@@ -1,8 +1,25 @@
 .hero
+  position: relative
   min-height: 90vh
   height: 100%
   padding: 64px 0
   background-color: lightgrey
+  background-image: url("https://fonoteka.top/uploads/posts/2021-06/1624523658_44-phonoteka_org-p-radiatsiya-oboi-krasivo-47.jpg")
+  background-size: cover
+  background-repeat: no-repeat
+  background-position: center
+  &::after
+    content: ""
+    position: absolute
+    width: 100%
+    height: 100%
+    background-color: rgba(#fff, 0.3)
+    left: 0
+    top: 0
+
+  &__container
+    position: relative
+    z-index: 1
 
   &__title
     font-family: "RussoOne", sans-serif
