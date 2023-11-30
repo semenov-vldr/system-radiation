@@ -37,6 +37,44 @@ function scrollHeader(header) {
 }
 "use strict";
 
+var time = 1000; // ms
+var step = 1;
+function outNum(num, elem) {
+  var n = 0;
+  var t = Math.round(time / (num / step));
+  var interval = setInterval(function () {
+    n = n + step;
+    if (n === num) clearInterval(interval);
+    if (elem.id === "value1") {
+      elem.innerHTML = n + "+";
+    } else {
+      elem.innerHTML = n;
+    }
+  }, t);
+}
+function callback(entry) {
+  var id = entry.target.id;
+  var target = entry.target;
+  if (id === "value1") outNum(100, target);
+  if (id === "value2") outNum(38, target);
+  if (id === "value3") outNum(24, target);
+  if (id === "value4") outNum(5, target);
+  if (entry.isIntersecting) observer.unobserve(target);
+}
+;
+var observer = new IntersectionObserver(function (entries) {
+  entries.forEach(callback);
+}, {
+  threshold: 0.5
+});
+var values = document.querySelectorAll(".about-us-statistics__value");
+if (values) {
+  values.forEach(function (value) {
+    return observer.observe(value);
+  });
+}
+"use strict";
+
 var accordionItems = document.querySelectorAll('.accordion__item'); // список элементов аккордиона
 
 if (accordionItems) {
