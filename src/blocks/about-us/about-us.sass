@@ -1,3 +1,33 @@
 .about-us
-  font-size: 24px
+
+  &__img
+    background-color: #D9D9D9
+    width: 100%
+    aspect-ratio: 12 / 5
+    min-height: 230px
+    display: flex
+    align-items: center
+    justify-content: center
+    font-family: "RussoOne", sans-serif
+    @include fontSize(26, 96)
+
+  &__values
+    display: grid
+    gap: 24px
+    grid-template-columns: repeat(4, auto)
+    @media (max-width: $width-tablet)
+      grid-template-columns: repeat(2, 1fr)
+    @media (max-width: $width-mobile)
+      grid-template-columns: 1fr
+
+  &-value
+    display: flex
+    flex-direction: column
+    span:nth-child(1)
+      font-family: "RussoOne", sans-serif
+      @include fontSize(80, 96)
+    span:nth-child(2)
+      @include fontSize(16, 22)
+      font-weight: 600
+
 
