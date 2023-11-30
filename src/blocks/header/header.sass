@@ -9,7 +9,7 @@
   background-color: $white
   transition: 0.4s ease
   &.js-scroll
-    transform: translateY(-100%)
+    // transform: translateY(-100%)
   &.js-menu-open
     z-index: 6
   @media (max-width: $width-mobile)
@@ -56,7 +56,7 @@
       transform: translateY(-100%)
       transition: $transition
       z-index: 1
-      background-image: url('../img/hero-desktop.jpg')
+      //background-image: url('../img/hero-desktop.jpg')
       background-position: center
       background-size: cover
       background-repeat: no-repeat
@@ -69,17 +69,6 @@
         top: 0
         left: 0
         background-color: rgba(#fff, 0.8)
-      &::before
-        content: ""
-        position: absolute
-        bottom: 20px
-        left: 0
-        right: 0
-        margin: 0 auto
-        width: 25%
-        height: 5px
-        border-radius: 5px
-        background-color: rgba($black, 0.5)
       &.js-menu-open
         transform: translateY(0)
       &.js-menu-open .header__nav-close
