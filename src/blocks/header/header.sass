@@ -42,7 +42,7 @@
   //    width: 120px
 
   &__nav
-    @media (max-width: $width-mobile)
+    @media (max-width: $width-tablet)
       overflow: initial
       position: fixed
       top: 0
@@ -82,7 +82,6 @@
     z-index: 1
     @media (max-width: $width-tablet)
       gap: 24px
-    @media (max-width: $width-mobile)
       flex-direction: column
       align-items: flex-start
 
@@ -98,6 +97,7 @@
     margin-left: auto
     white-space: nowrap
     font-weight: 700
+    font-variant-numeric: lining-nums
     @media (max-width: $width-mobile)
       font-size: 16px
 
