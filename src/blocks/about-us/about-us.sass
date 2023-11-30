@@ -11,8 +11,9 @@
     font-family: "RussoOne", sans-serif
     @include fontSize(26, 96)
 
-  &__values
+  &-statistics
     display: grid
+    margin-top: 16px
     gap: 24px
     grid-template-columns: repeat(4, auto)
     @media (max-width: $width-tablet)
@@ -20,14 +21,14 @@
     @media (max-width: $width-mobile)
       grid-template-columns: 1fr
 
-  &-value
+  &-statistics__item
     display: flex
     flex-direction: column
-    span:nth-child(1)
-      font-family: "RussoOne", sans-serif
-      @include fontSize(80, 96)
-    span:nth-child(2)
-      @include fontSize(16, 22)
-      font-weight: 600
+  &-statistics__value
+    font-family: "RussoOne", sans-serif
+    @include fontSize(80, 96)
+  &-statistics__text
+    @include fontSize(16, 22)
+    font-weight: 600
 
 
