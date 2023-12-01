@@ -25,6 +25,76 @@ function toggleBlockScrollBody() {
 "use strict";
 "use strict";
 
+var phoneInputs = document.querySelectorAll('input[data-tel-input]');
+var getInputNumbersValue = function getInputNumbersValue(input) {
+  return input.value.replace(/\D/g, "");
+};
+var onPhoneInput = function onPhoneInput(evt) {
+  var input = evt.target;
+  var inputNumbersValue = getInputNumbersValue(input);
+  var formattedInputValue = "";
+  var selectionStart = input.selectionStart;
+  if (!inputNumbersValue) input.value = "";
+  if (input.value.length !== selectionStart) {
+    if (evt.data && /\D/g.test(evt.data)) {
+      input.value = formattedInputValue;
+    }
+    return;
+  }
+  if (["7", "8", "9"].indexOf(inputNumbersValue[0]) > -1) {
+    // Российские номера
+    if (inputNumbersValue[0] === "9") inputNumbersValue = "7" + inputNumbersValue;
+    var firstSymbols = inputNumbersValue[0] === "8" ? "8" : "+7";
+    formattedInputValue = firstSymbols + " ";
+    if (inputNumbersValue[0] === "8") {
+      //phoneInputs[0].setAttribute("pattern", ".{17,}");
+      console.log(phoneInputs[0].getAttribute("pattern"));
+    }
+    if (inputNumbersValue.length > 1) {
+      formattedInputValue += "(" + inputNumbersValue.slice(1, 4);
+    }
+    if (inputNumbersValue.length >= 5) {
+      formattedInputValue += ") " + inputNumbersValue.slice(4, 7);
+    }
+    if (inputNumbersValue.length >= 8) {
+      formattedInputValue += "-" + inputNumbersValue.slice(7, 9);
+    }
+    if (inputNumbersValue.length >= 10) {
+      formattedInputValue += "-" + inputNumbersValue.slice(9, 11);
+    }
+
+    // Не российские номера
+  } else formattedInputValue = "+" + inputNumbersValue;
+  input.value = formattedInputValue;
+};
+
+// Стирание первого символа
+var onPhoneKeyDown = function onPhoneKeyDown(evt) {
+  var input = evt.target;
+  if (evt.keyCode === 8 && getInputNumbersValue(input).length === 1) {
+    input.value = "";
+  }
+};
+
+// Вставка цифр в любое место
+var onPhonePaste = function onPhonePaste(evt) {
+  var pasted = evt.clipboardData || window.clipboardData;
+  var input = evt.target;
+  var inputNumbersValue = getInputNumbersValue(input);
+  if (pasted) {
+    var pastedText = pasted.getData("Text");
+    if (/\D/g.test(pastedText)) {
+      input.value = inputNumbersValue;
+    }
+  }
+};
+phoneInputs.forEach(function (input) {
+  input.addEventListener('input', onPhoneInput);
+  input.addEventListener("keydown", onPhoneKeyDown);
+  input.addEventListener("paste", onPhonePaste);
+});
+"use strict";
+
 var previousPosition = document.documentElement.scrollTop;
 function scrollHeader(header) {
   var currentPosition = document.documentElement.scrollTop;
@@ -83,6 +153,10 @@ mySwiper = new Swiper(swiperClients, {
     clickable: true,
     types: "bullets"
   },
+  scrollbar: {
+    el: ".swiper-scrollbar",
+    draggable: true
+  },
   // Откл функционала, если слайдов меньше, чем нужно
   watchOverflow: true,
   // Брейк поинты (адаптив)
@@ -123,6 +197,41 @@ if (accordionItems) {
     });
   });
 }
+"use strict";
+
+// Подключен axios.min.js в шаблоне
+
+var TOKEN = "6439049822:AAHuQyECo9HqHDpzRcj9qwrt384oisaNJYY";
+var CHAT_ID = "-1002094796235";
+var URL_API = "https://api.telegram.org/bot".concat(TOKEN, "/sendMessage");
+var form = document.getElementById("feedback");
+if (form) form.addEventListener('submit', function (evt) {
+  return sendMsgTelegram(evt);
+});
+function sendMsgTelegram(evt) {
+  evt.preventDefault();
+  var form = evt.target;
+  var message = "<b>\u0417\u0430\u044F\u0432\u043A\u0430 \u0441 \u0441\u0430\u0439\u0442\u0430 \u041E\u041E\u041E \u0421\u0438\u0441\u0442\u0435\u043C\u0430 - \u0420\u0430\u0434\u0438\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0435 \u043E\u0431\u043E\u0440\u0443\u0434\u043E\u0432\u0430\u043D\u0438\u0435</b>\n";
+  message += "<b>\u0418\u043C\u044F \u043E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u0435\u043B\u044F:</b> ".concat(form.name.value, "\n");
+  message += "<b>\u0422\u0435\u043B\u0435\u0444\u043E\u043D:</b> ".concat(form.phone.value, "\n");
+
+  //message += `<b>Сообщение:</b> ${ this.message.value }\n`;
+
+  axios.post(URL_API, {
+    chat_id: CHAT_ID,
+    parse_mode: 'html',
+    text: message
+  }).then(function () {
+    console.log('Заявка успешно отправлена');
+  })["catch"](function (err) {
+    console.warn(err);
+  })["finally"](function () {
+    console.log('Конец');
+  });
+  alert('Заявка отправлена успешно');
+  form.reset();
+}
+;
 "use strict";
 
 var mapFooter = document.querySelector('#footer-map');
