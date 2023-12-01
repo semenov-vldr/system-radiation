@@ -126,7 +126,7 @@ gulp.task('scripts:dev', function () {
 });
 
 // Libs JS
-gulp.task('libs:dev', function () {
+gulp.task('scripts:libs:dev', function () {
   return gulp
     .src('./src/libs/**/*.js')
     .pipe(concatJs('libs.min.js'))

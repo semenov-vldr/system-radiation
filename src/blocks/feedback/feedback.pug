@@ -1,0 +1,11 @@
+section.feedback#feedback
+    .feedback__container
+        h2.title-section.feedback__title Задать вопрос
+
+        form.feedback__form
+            label Имя
+                input(placeholder="Введите имя" name="name" pattern="^[A-Za-zА-Яа-яЁё\\s]+$" maxlength='40' required)
+            label Номер телефона
+                input(placeholder="+7 (999) 999-99-99" name="phone" data-tel-input required)
+
+            button Отправить заявку

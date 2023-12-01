@@ -9,6 +9,11 @@ mySwiper = new Swiper(swiperClients, {
     types: "bullets",
   },
 
+  scrollbar: {
+    el: ".swiper-scrollbar",
+    draggable: true,
+  },
+
   // Откл функционала, если слайдов меньше, чем нужно
   watchOverflow: true,
 
