@@ -115,18 +115,14 @@ function outNum(num, elem) {
   var interval = setInterval(function () {
     n = n + step;
     if (n === num) clearInterval(interval);
-    if (elem.id === "value1") {
-      elem.innerHTML = n + "+";
-    } else {
-      elem.innerHTML = n;
-    }
+    elem.id === "value1" ? elem.innerHTML = n + "+" : elem.innerHTML = n;
   }, t);
 }
 function callback(entry) {
   var id = entry.target.id;
   var target = entry.target;
-  if (id === "value1") outNum(100, target);
-  if (id === "value2") outNum(38, target);
+  if (id === "value1") outNum(20, target);
+  if (id === "value2") outNum(6, target);
   if (id === "value3") outNum(24, target);
   if (id === "value4") outNum(5, target);
   if (entry.isIntersecting) observer.unobserve(target);
@@ -272,16 +268,7 @@ if (header) {
     header.classList.add(menuActiveClass);
     menu.classList.add(menuActiveClass);
     blockScrollBody();
-
-    // if (menu.classList.contains(menuActiveClass)) {
-    //   let mc = new Hammer(menu);
-    //   mc.get('swipe').set({
-    //     direction: Hammer.DIRECTION_ALL,
-    //   });
-    //   mc.on('swipeup', closeMobileMenu);
-    // }
   });
-
   menuClose.addEventListener('click', closeMobileMenu);
   navLinks.forEach(function (navLink) {
     navLink.addEventListener("click", closeMobileMenu);
@@ -290,3 +277,14 @@ if (header) {
     return scrollHeader(header);
   });
 }
+"use strict";
+
+var loader = document.getElementById('loader');
+function hideLoader() {
+  loader.classList.add('hide');
+  setTimeout(function () {
+    loader.remove();
+  }, 500);
+}
+;
+if (loader) window.addEventListener('load', hideLoader);
