@@ -4,8 +4,8 @@ section.feedback#feedback
 
         form.feedback__form
             label Имя
-                input(placeholder="Введите имя" name="name" pattern="^[A-Za-zА-Яа-яЁё\\s]+$" maxlength='40' required)
+                input(placeholder="Введите имя" name="name" autocomplete="off" pattern="^[A-Za-zА-Яа-яЁё\\s]+$" maxlength='40' required)
             label Номер телефона
-                input(placeholder="+7 (999) 999-99-99" name="phone" data-tel-input required)
+                input(placeholder="+7 (999) 999-99-99" name="phone" data-tel-input required autocomplete="off")
 
-            button Отправить заявку
+            button(type="submit") Отправить заявку

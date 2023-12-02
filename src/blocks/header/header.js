@@ -19,14 +19,6 @@ if (header) {
     header.classList.add(menuActiveClass);
     menu.classList.add(menuActiveClass);
     blockScrollBody();
-
-    // if (menu.classList.contains(menuActiveClass)) {
-    //   let mc = new Hammer(menu);
-    //   mc.get('swipe').set({
-    //     direction: Hammer.DIRECTION_ALL,
-    //   });
-    //   mc.on('swipeup', closeMobileMenu);
-    // }
   });
 
   menuClose.addEventListener('click', closeMobileMenu);

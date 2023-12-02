@@ -8,11 +8,7 @@ function outNum(num, elem) {
   let interval = setInterval(() => {
     n = n + step;
     if (n === num) clearInterval(interval);
-    if (elem.id === "value1") {
-      elem.innerHTML = n + "+";
-    } else {
-      elem.innerHTML = n;
-    }
+    (elem.id === "value1") ? elem.innerHTML = n + "+" : elem.innerHTML = n;
   }, t);
 }
 
@@ -20,12 +16,12 @@ function outNum(num, elem) {
 function callback (entry) {
   const id = entry.target.id;
   const target = entry.target;
-  if (id === "value1") outNum(100, target);
-  if (id === "value2") outNum(38, target);
+  if (id === "value1") outNum(20, target);
+  if (id === "value2") outNum(6, target);
   if (id === "value3") outNum(24, target);
   if (id === "value4") outNum(5, target);
 
-  if (entry.isIntersecting) observer.unobserve(target)
+  if (entry.isIntersecting) observer.unobserve(target);
 };
 
 

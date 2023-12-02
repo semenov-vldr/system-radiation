@@ -2,31 +2,27 @@
   scroll-margin: 120px
   @media (max-width: $width-mobile)
     scroll-margin: 70px
+
   .catalog-equipment
     display: grid
-    grid-template-columns: repeat(3, 1fr)
-    gap: 16px
+    grid-template-columns: repeat(5, 1fr)
+    gap: 24px
+    @media(max-width: $width-tablet)
+      grid-template-columns: repeat(3, 1fr)
     @media(max-width: $width-mobile)
       grid-template-columns: repeat(2, 1fr)
+      gap: 14px
 
     &__item
       position: relative
       display: flex
       flex-direction: column
       gap: 8px
-      border: 1px solid black
-      padding: 8px
+      border: 1px solid $lightgrey
+      padding: 12px
+      @media(max-width: $width-mobile)
+        padding: 8px
 
     &__img
-      max-width: 350px
-      width: 80%
+      width: 100%
       object-fit: cover
-
-    &__link
-      position: absolute
-      right: 16px
-      bottom: 16px
-      background-color: lightgrey
-      @media(max-width: $width-mobile)
-        display: none
-      

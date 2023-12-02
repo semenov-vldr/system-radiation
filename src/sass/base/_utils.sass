@@ -16,17 +16,53 @@
 
 .title-section
   font-family: "RussoOne", sans-serif
-  @include fontSize(20, 28)
-  margin-bottom: 24px
+  @include fontSize(21, 28)
+  margin-bottom: 40px
   @media (max-width: $width-mobile)
     margin-bottom: 20px
-
 
 .flex-center
   display: flex
   align-items: center
   justify-content: center
 
+
+// Горизонатльная линия декора под H2
+.h-line
+  position: relative
+  @media (min-width: $width-mobile)
+    &::after
+      content: ""
+      position: absolute
+      width: 200%
+      left: -50%
+      bottom: -16px
+      height: 1px
+      background-color: $grey
+
+.v-line
+  position: relative
+  // Вертикальная линия декора
+  &::before,
+  &::after
+    content: ""
+    position: absolute
+    background-color: $grey
+    width: 1px
+    height: 500%
+    top: -20%
+    z-index: -1
+    @media (max-width: $width-mobile)
+      display: none
+  &::before
+    left: 56px
+  &::after
+    right: 56px
+  @media (max-width: $width-tablet)
+    &::before
+      left: 25px
+    &::after
+      right: 25px
 
 .button
   font-weight: 600

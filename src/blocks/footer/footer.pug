@@ -1,13 +1,14 @@
 footer.footer#footer
     .footer__container.container
-        a.footer__logo(href="index.html") Система
+        a.footer__logo(href="index.html")
+            img(src="../assets/img/logo.png")
 
         nav.footer__nav.footer-nav
             ul.footer-nav__list
                 li.footer-nav__item
-                    a.footer-nav__link(href="/#equipment") Оборудование
+                    a.footer-nav__link(href="#equipment") Оборудование
                 li.footer-nav__item
-                    a.footer-nav__link(href="/#about-us") О нас
+                    a.footer-nav__link(href="#about-us") О нас
                 li.footer-nav__item
                     a.footer-nav__link(href="##") Портфолио
 
@@ -26,6 +27,8 @@ footer.footer#footer
             #footer-map
 
         .footer__copyright
-            span © ООО «Система»‎, 2023
+            span © ООО «Система», 2023
             a.footer__politics(href="##") Политика конфиденциальности
+
+include ../loader/loader
 
