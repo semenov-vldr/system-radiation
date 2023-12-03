@@ -4,17 +4,17 @@
   left: 0
   width: 100%
   z-index: 5
-  padding: 22px 0
+  padding: 14px 0
   min-height: 35px
   background-color: $bg
   transition: 0.4s ease
+  border-bottom: 1px solid $grey
   &.js-menu-open
     z-index: 6
   @media (max-width: $width-tablet)
     min-height: 50px
     padding: 12px 0
     font-size: 20px
-
 
   &__container
     display: flex
@@ -39,36 +39,15 @@
       height: 100%
       width: 100%
       background-color: $bg
-      padding: 70px 50px
-      transform: translateY(-100%)
+      padding: 56px 0
+      transform: translateX(100%)
       transition: $transition
       z-index: 1
-      //background-image: url('../img/hero-desktop.jpg')
-      background-position: center
-      background-size: cover
-      background-repeat: no-repeat
       font-weight: 500
-      @media (max-width: $width-mobile)
-        padding: 70px 16px
       &.js-menu-open
-        transform: translateY(0)
+        transform: translateX(0)
       &.js-menu-open .header__nav-close
         display: block
-      &::before,
-      &::after
-        content: ""
-        position: absolute
-        background-color: rgba($white, 0.1)
-      &::before
-        width: 100%
-        height: 1px
-        left: 0
-        top: 70%
-      &::after
-        width: 1px
-        height: 100%
-        right: 25%
-        top: 0
 
   &__nav-list
     position: relative
@@ -77,30 +56,47 @@
     gap: 32px
     z-index: 1
     @media (max-width: $width-tablet)
-      gap: 24px
+      gap: 0
       flex-direction: column
       align-items: flex-start
 
   &__nav-item
     white-space: nowrap
-    transition: $transition
     &--desktop-hidden
       display: none
-      @media (max-width: $width-mobile)
+      @media (max-width: $width-tablet)
         display: block
+    @media (max-width: $width-tablet)
+      border-bottom: 1px solid $grey
+      width: 100%
+      padding: 12px 0
+      &:first-child
+        border-top: 1px solid $grey
+
+  &__nav-link
+    transition: $transition
+    &:hover
+      color: $accent
+    @media (max-width: $width-tablet)
+      padding: 0 50px
+    @media (max-width: $width-mobile)
+      padding: 0 16px
 
   &__tel
     margin-left: auto
     white-space: nowrap
     font-weight: 700
+    transition: $transition
     @media (max-width: $width-tablet)
       font-size: 16px
+    &:hover
+      text-decoration: underline
 
   &__burger
     display: none
     @media (max-width: $width-tablet)
       display: block
-      width: 25px
+      width: 24px
 
   &__nav-close
     display: none
@@ -110,4 +106,6 @@
     z-index: 1
     @media (max-width: $width-mobile)
       right: 16px
-      width: 25px
+      width: 24px
+    img
+      transform: rotate(180deg)

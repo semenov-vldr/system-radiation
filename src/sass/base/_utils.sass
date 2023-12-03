@@ -30,15 +30,16 @@
 // Горизонатльная линия декора под H2
 .h-line
   position: relative
-  @media (min-width: $width-mobile)
-    &::after
-      content: ""
-      position: absolute
-      width: 200%
-      left: -50%
-      bottom: -16px
-      height: 1px
-      background-color: $grey
+  &::after
+    content: ""
+    position: absolute
+    width: 200%
+    left: -50%
+    bottom: -16px
+    height: 1px
+    background-color: $grey
+    @media (max-width: $width-mobile)
+      bottom: -8px
 
 .v-line
   position: relative
@@ -50,7 +51,7 @@
     background-color: $grey
     width: 1px
     height: 500%
-    top: -20%
+    top: -30%
     z-index: -1
     @media (max-width: $width-mobile)
       display: none
@@ -65,18 +66,30 @@
       right: 25px
 
 .button
-  font-weight: 600
-  border-radius: 30px
+  display: flex
+  align-items: center
+  justify-content: center
+  font-weight: 700
+  padding: 10px 96px
+  min-height: 56px
+  font-size: 24px
+  color: $white
+  transition: $transition
+  line-height: 1
   width: fit-content
-  padding: 8px 32px
-  min-height: 40px
-  border: 1px solid transparent
+  @include fontSize(20, 24)
+  @media (max-width: $width-mobile)
+    padding: 8px 24px
+    min-height: 48px
   &.button--accent
-    //background-color: $accent
-    color: white
+    background-color: $accent
     &:hover
-      //background-color: $accent-hover
-      transition: 0.3s
+      background-color: $bright-red
+  &.button--outline
+    border: 1px solid $accent
+    &:hover
+      background-color: $bright-red
+      border-color: $bright-red
 
 
 button

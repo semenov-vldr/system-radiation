@@ -18,10 +18,21 @@
       display: flex
       flex-direction: column
       gap: 8px
-      border: 1px solid $lightgrey
+      border: 2px solid $lightgrey
       padding: 12px
+      transition: $transition
+      &:hover
+        background-color: #F7F7F7
+        border-color: #F7F7F7
+      &:hover .catalog-equipment__title
+        color: $bg
       @media(max-width: $width-mobile)
         padding: 8px
+
+    &__title
+      font-weight: 700
+      text-transform: uppercase
+      transition: $transition
 
     &__img
       width: 100%

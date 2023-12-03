@@ -1,27 +1,51 @@
 .about-us
   scroll-margin: 120px
+  padding-bottom: 150px
   @media (max-width: $width-mobile)
     scroll-margin: 70px
+    padding-bottom: 0
+
+  &__box
+    position: relative
 
   &__img
     width: 100%
     aspect-ratio: 12 / 5
     min-height: 230px
     object-fit: contain
+    @media (max-width: $width-mobile)
+      max-width: none
+      width: 185%
+      margin-left: -18%
 
   &-statistics
     display: grid
     margin-top: 16px
     gap: 24px
-    grid-template-columns: repeat(4, auto)
-    @media (max-width: $width-tablet)
-      grid-template-columns: repeat(2, 1fr)
+    //grid-template-columns: repeat(4, auto)
+    //@media (max-width: $width-tablet)
+    //  grid-template-columns: repeat(2, 1fr)
     @media (max-width: $width-mobile)
       grid-template-columns: 1fr
 
   &-statistics__item
     display: flex
     flex-direction: column
+    @media (min-width: $width-mobile)
+      position: absolute
+      &:nth-child(1)
+        bottom: -10%
+      &:nth-child(2)
+        left: 35%
+      &:nth-child(3)
+        left: 63%
+        bottom: -20%
+      &:nth-child(4)
+        right: 5%
+        bottom: -10%
+
+
+
   &-statistics__value
     font-family: "RussoOne", sans-serif
     //@include fontSize(80, 96)

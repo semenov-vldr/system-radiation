@@ -1,0 +1,66 @@
+.portfolio
+
+  &__list
+    display: grid
+    grid-template-columns: repeat(3, 1fr)
+    gap: 32px
+    overflow-x: scroll
+    @media (max-width: $width-tablet)
+      gap: 24px
+    @media (max-width: $width-mobile)
+      gap: 16px
+
+  &-item
+    display: flex
+    flex-direction: column
+    gap: 12px
+    border: 2px solid $lightgrey
+    padding: 16px
+    min-width: 320px
+    @media (max-width: $width-mobile)
+      padding: 12px
+      min-width: 300px
+
+    &__title
+      font-family: "RussoOne", sans-serif
+      @include fontSize(18, 24)
+
+    &__locations
+      display: flex
+      flex-direction: column
+      gap: 8px
+
+    &__location
+      position: relative
+      display: flex
+      gap: 4px
+      align-items: center
+      &::before
+        content: ""
+        display: inline-block
+        background-image: url("../img/icons/location.svg")
+        background-repeat: no-repeat
+        background-position: center
+        background-size: cover
+        width: 24px
+        height: 24px
+
+    &__equipments
+      display: flex
+      flex-direction: column
+      gap: 4px
+      line-height: 1.4
+      @media (max-width: $width-mobile)
+        font-size: 14px
+
+    &__equipment
+      list-style-type: disc
+      margin-left: 24px
+
+  .button
+    margin: 40px auto 0
+    max-width: none
+    width: 31%
+    @media (max-width: $width-mobile)
+      width: 100%
+      max-width: 320px
