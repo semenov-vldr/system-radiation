@@ -1,10 +1,35 @@
 .product-page
 
+  &__header
+    position: relative
+    margin: 40px 0
+    &.h-line::after
+      @media (max-width: $width-mobile)
+        display: none
+    @media (max-width: $width-mobile)
+      display: flex
+      align-items: center
+      justify-content: center
+
   &__title
     @include fontSize(21, 32)
     font-family: "RussoOne", sans-serif
-    margin: 40px 0
     text-transform: uppercase
+    @media (max-width: $width-mobile)
+      margin-right: auto
+
+  &__back
+    display: none
+    background-image: url("../img/icons/arrow-back.svg")
+    background-repeat: no-repeat
+    background-position: center
+    background-size: cover
+    width: 24px
+    height: 24px
+    @media (max-width: $width-mobile)
+      display: block
+      margin-right: auto
+
 
   &__grid
     position: relative
@@ -12,7 +37,6 @@
     grid-template-columns: repeat(2, 1fr)
     column-gap: 16px
     @media (max-width: $width-mobile)
-      //grid-template-columns: 1fr
       display: flex
       flex-direction: column
 
