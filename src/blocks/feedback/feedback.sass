@@ -8,8 +8,9 @@
   border-left: 1px solid $lightgrey
   border-right: 1px solid $lightgrey
   @media (max-width: $width-mobile)
-    scroll-margin: 70px
+    scroll-margin: 80px
     border: none
+    max-width: 400px
   @media (min-width: $width-mobile)
     &::before,
     &::after
@@ -33,6 +34,10 @@
   &__title
     @media (min-width: $width-mobile)
       text-align: center
+    &.h-line
+      display: none
+      @media (max-width: $width-mobile)
+        display: block
 
   &__form
     display: flex
@@ -46,7 +51,7 @@
       font-size: 18px
       width: 100%
       @media (min-width: $width-mobile)
-        max-width: 290px
+        max-width: 320px
     input
       margin-top: 8px
       width: 100%
