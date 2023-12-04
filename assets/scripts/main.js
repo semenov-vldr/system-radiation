@@ -288,3 +288,24 @@ function hideLoader() {
 }
 ;
 if (loader) window.addEventListener('load', hideLoader);
+"use strict";
+
+var productPage = document.querySelector('.product-page');
+if (productPage) {
+  var slider = productPage.querySelector('.product-page__slider-wrap');
+  var swiper = new Swiper(slider, {
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true
+    },
+    effect: "fade",
+    navigation: {
+      prevEl: '.slider-nav__prev',
+      nextEl: '.slider-nav__next'
+    },
+    loop: true,
+    slidesPerView: 1,
+    centeredSlides: true,
+    initialSlide: 0
+  });
+}
