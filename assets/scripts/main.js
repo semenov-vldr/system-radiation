@@ -253,15 +253,14 @@ if (loader) window.addEventListener('load', hideLoader);
 var productPage = document.querySelector('.product-page');
 if (productPage) {
   var slider = productPage.querySelector('.product-page__slider-wrap');
-  var swiper = new Swiper(slider, {
+  new Swiper(slider, {
     pagination: {
-      el: '.swiper-pagination',
+      el: slider.nextElementSibling,
       clickable: true
     },
-    effect: "fade",
     navigation: {
-      prevEl: '.slider-nav__prev',
-      nextEl: '.slider-nav__next'
+      prevEl: ".slider-nav__prev",
+      nextEl: ".slider-nav__next"
     },
     loop: true,
     slidesPerView: 1,
