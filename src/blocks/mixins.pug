@@ -1,0 +1,36 @@
+mixin productPage(productData)
+    section.product-page
+        .product-page__container.container.v-line
+            .product-page__header.h-line
+                a.product-page__back(href="index.html")
+                h1.product-page__title=productData.title
+
+            .product-page__grid
+                .product-page__slider-wrap.swiper
+                    .product-page__slider.swiper-wrapper
+
+                      each src in productData.images
+                          img.product-page__slide.swiper-slide(src=src)
+
+                    button.slider-nav__prev
+                    button.slider-nav__next
+
+                .swiper-pagination
+
+                a.button.button.button--accent.product-page__button.product-page__button--mobile(href="#feedback") Заказать
+
+                .product-page__content
+
+                    .product-page__appointment.product-page-appointment
+                        h2 Назначение
+                        .product-page-appointment__text
+                          each appointment in productData.appointment
+                              p=appointment
+
+                    .product-page__desc.product-page-desc
+                        h2 Описание
+                        .product-page-desc__text
+                          each desc in productData.desc
+                              p=desc
+
+                        a.button.button--accent.product-page__button.product-page__button--tablet(href="#feedback") Заказать

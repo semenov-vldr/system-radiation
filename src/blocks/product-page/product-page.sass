@@ -10,6 +10,7 @@
       display: flex
       align-items: center
       justify-content: center
+      gap: 24px
 
   &__title
     @include fontSize(21, 32)
@@ -42,9 +43,10 @@
 
   &__slider-wrap
     position: initial
-    height: 600px
+    min-height: 600px
     @media (max-width: $width-tablet)
       height: auto
+      min-height: initial
 
   &__slider
     @media (max-width: $width-mobile)
@@ -128,38 +130,41 @@
       @media (max-width: $width-mobile)
         padding-bottom: 0
 
-  .swiper
-    overflow: initial
-
   .swiper-pagination
-    position: relative
+    position: absolute
     display: flex
     gap: 12px
     justify-content: center
-    margin-top: 16px
+    bottom: -28px
+    left: 25%
+    transform: translateX(-50%)
+    z-index: 1
     @media (max-width: $width-mobile)
       gap: 8px
-      margin-top: 8px
-    .swiper-pagination-bullet
+      margin-top: 16px
+      position: relative
+      transform: none
+      bottom: 0
+      left: 0
+    &-bullet
       background-color: $lightgrey
       width: 12px
       height: 12px
       @media (max-width: $width-mobile)
         width: 8px
         height: 8px
-    .swiper-pagination-bullet-active
-      background-color: #F7F7F7
-      width: 24px
-      border-radius: 12px
-      @media (max-width: $width-mobile)
-        width: 16px
+      &-active
+        background-color: #F7F7F7
+        width: 24px
+        border-radius: 12px
+        @media (max-width: $width-mobile)
+          width: 16px
 
   &__button
     margin: 0 auto
     @media (max-width: $width-mobile)
       width: 100%
       margin: 40px 0
-
     &.product-page__button--mobile
       display: none
       @media (max-width: $width-mobile)
