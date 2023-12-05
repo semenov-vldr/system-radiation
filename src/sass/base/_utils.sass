@@ -133,26 +133,24 @@ button
 //background-color: $grey
 
 // стрелки навигации
-//.swiper-button-next,
-//.swiper-button-prev
-//  width: 32px
-//  height: 32px
-//  cursor: pointer
-//  z-index: 1
-//  background-repeat: no-repeat
-//  background-size: cover
-//  background-position: center
-//  top: -50px
-//  right: 0
-//  left: initial
-//  margin-top: 0
-//  &::after
-//    display: none
-//  @media (max-width: $width-mobile)
-//    display: none
-//.swiper-button-prev
-//  background-image: url('../img/icons/arrow-right.svg')
-//  transform: rotate(180deg) translateX(100%)
-//  right: 20px
-//.swiper-button-next
-//  background-image: url('../img/icons/arrow-right.svg')
+.swiper-button-next,
+.swiper-button-prev
+  position: absolute
+  width: 32px
+  height: 32px
+  cursor: pointer
+  z-index: 1
+  background-repeat: no-repeat
+  background-size: cover
+  background-position: center
+  background-color: tomato
+  top: 50%
+  @media (max-width: $width-mobile)
+    display: none
+.swiper-button-prev
+  background-image: url('../img/icons/arrow-right.svg')
+  transform: rotate(180deg) translateX(100%)
+  left: 20px
+.swiper-button-next
+  background-image: url('../img/icons/arrow-right.svg')
+  right: 20px
