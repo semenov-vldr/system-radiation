@@ -133,8 +133,8 @@ button
 //background-color: $grey
 
 // стрелки навигации
-.swiper-button-next,
-.swiper-button-prev
+.slider-nav__next,
+.slider-nav__prev
   position: absolute
   width: 32px
   height: 32px
@@ -144,13 +144,15 @@ button
   background-size: cover
   background-position: center
   background-color: tomato
+  border-radius: 50%
   top: 50%
   @media (max-width: $width-mobile)
     display: none
-.swiper-button-prev
+.slider-nav__prev
   background-image: url('../img/icons/arrow-right.svg')
-  transform: rotate(180deg) translateX(100%)
+  transform: rotate(180deg) translateX(-100%)
   left: 20px
-.swiper-button-next
+.slider-nav__next
   background-image: url('../img/icons/arrow-right.svg')
   right: 20px
+  translateX(-100%)
