@@ -8,16 +8,16 @@
         display: none
     @media (max-width: $width-mobile)
       display: flex
-      align-items: center
+      //align-items: center
       justify-content: center
       gap: 24px
+      text-align: center
+      padding: 0 40px
 
   &__title
     @include fontSize(21, 32)
     font-family: "RussoOne", sans-serif
     text-transform: uppercase
-    @media (max-width: $width-mobile)
-      margin-right: auto
 
   &__back
     display: none
@@ -28,8 +28,9 @@
     width: 24px
     height: 24px
     @media (max-width: $width-mobile)
+      position: absolute
+      left: 0
       display: block
-      margin-right: auto
 
 
   &__grid

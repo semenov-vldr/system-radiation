@@ -1,6 +1,11 @@
 const mapFooter = document.querySelector('#footer-map');
 
-if (mapFooter) ymaps.ready(initYaMap);
+if (mapFooter) {
+  ymaps.ready(initYaMap);
+
+  const footerCopyrightYear = document.querySelector("#footer .footer__copyright > span");
+  footerCopyrightYear.textContent = `© ООО «Система», ${new Date().getFullYear()}` //© ООО «Система», 2023
+}
 
 
 function initYaMap() {

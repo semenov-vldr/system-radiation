@@ -1,20 +1,20 @@
 header.header
     .header__container.container(itemscope itemtype="https://schema.org/Organization")
-        a.header__logo(href="index.html" itemprop="url")
-          img(src="./assets/img/logo.png")
+        a.header__logo(href="/" itemprop="url")
+          img(src="./assets/img/logo.png" alt="Логотип ООО «Система»")
 
         nav.header__nav
             button.header__nav-close
-                img(src="./assets/img/icons/arrow-back.svg")
+                img(src="./assets/img/icons/arrow-back.svg" alt="Кнопка назад")
             ul.header__nav-list
                 li.header__nav-item.header__nav-item--desktop-hidden
-                    a.header__nav-link(href="index.html") Главная
+                    a.header__nav-link(href="") Главная
                 li.header__nav-item
-                    a.header__nav-link(href="#equipment") Оборудование
+                    a.header__nav-link(href="/#equipment") Оборудование
                 li.header__nav-item
-                    a.header__nav-link(href="#about-us") О нас
+                    a.header__nav-link(href="/#about-us") О нас
                 li.header__nav-item
-                    a.header__nav-link(href="##") Портфолио
+                    a.header__nav-link(href="/#portfolio") Портфолио
                 li.header__nav-item
                     a.header__nav-link(href="#feedback") Задать вопрос
                 li.header__nav-item
@@ -23,4 +23,4 @@ header.header
         a.header__tel(href="tel:+78126482388" itemprop="telephone" content="+78126482388") +7 (812) 648-23-88
 
         button.header__burger
-            img(src="./assets/img/icons/burger.svg")
+            img(src="./assets/img/icons/burger.svg" alt="Кнопка Меню")

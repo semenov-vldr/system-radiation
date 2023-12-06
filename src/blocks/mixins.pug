@@ -2,15 +2,15 @@ mixin productPage(productData)
     section.product-page
         .product-page__container.container.v-line
             .product-page__header.h-line
-                a.product-page__back(href="index.html")
-                h1.product-page__title=productData.title
+                a.product-page__back(href="/#equipment")
+                h1.product-page__title=productData.titleFull
 
             .product-page__grid
                 .product-page__slider-wrap.swiper
                     .product-page__slider.swiper-wrapper
 
                       each src in productData.images
-                          img.product-page__slide.swiper-slide(src=src)
+                          img.product-page__slide.swiper-slide(src=src alt=productData.titleFull)
 
                     button.slider-nav__prev
                     button.slider-nav__next
