@@ -141,20 +141,6 @@ if (values) {
 }
 "use strict";
 
-var accordionItems = document.querySelectorAll('.accordion__item'); // список элементов аккордиона
-
-if (accordionItems) {
-  var toggleClass = function toggleClass(item) {
-    return item.classList.toggle('js-accordion-active');
-  };
-  accordionItems.forEach(function (accordionItem) {
-    accordionItem.addEventListener('click', function () {
-      return toggleClass(accordionItem);
-    });
-  });
-}
-"use strict";
-
 // Подключен axios.min.js в шаблоне
 
 var TOKEN = "6439049822:AAHuQyECo9HqHDpzRcj9qwrt384oisaNJYY";
@@ -191,7 +177,12 @@ function sendMsgTelegram(evt) {
 "use strict";
 
 var mapFooter = document.querySelector('#footer-map');
-if (mapFooter) ymaps.ready(initYaMap);
+if (mapFooter) {
+  ymaps.ready(initYaMap);
+  var footerCopyrightYear = document.querySelector("#footer .footer__copyright > span");
+  footerCopyrightYear.textContent = "\xA9 \u041E\u041E\u041E \xAB\u0421\u0438\u0441\u0442\u0435\u043C\u0430\xBB, ".concat(new Date().getFullYear()); //© ООО «Система», 2023
+}
+
 function initYaMap() {
   var pointAddress = [59.986484, 30.287868];
   var myMap = new ymaps.Map('footer-map', {
