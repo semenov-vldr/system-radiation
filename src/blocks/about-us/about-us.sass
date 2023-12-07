@@ -7,40 +7,69 @@
     position: relative
 
   &__img
+    display: block
+    margin: 0 auto
     width: 100%
-    aspect-ratio: 12 / 5
-    min-height: 230px
+    max-width: 90%
     object-fit: contain
+    @media (max-width: $width-tablet)
+      max-width: initial
     @media (max-width: $width-mobile)
-      max-width: none
-      width: 185%
-      margin-left: -18%
+      width: 145%
 
   &-statistics
     display: grid
-    margin-top: 16px
     gap: 24px
-    //grid-template-columns: repeat(4, auto)
-    //@media (max-width: $width-tablet)
-    //  grid-template-columns: repeat(2, 1fr)
+    margin-top: 16px
     @media (max-width: $width-mobile)
       grid-template-columns: 1fr
 
   &-statistics__item
     display: flex
     flex-direction: column
-    @media (min-width: $width-mobile)
-      position: absolute
+    position: absolute
+    &:nth-child(1)
+      bottom: -10%
+    &:nth-child(2)
+      left: 35%
+    &:nth-child(3)
+      left: 63%
+      bottom: -20%
+    &:nth-child(4)
+      right: 0
+      bottom: -8%
+    @media (max-width: 1300px)
       &:nth-child(1)
-        bottom: -10%
+        max-width: 270px
+        bottom: -15%
       &:nth-child(2)
-        left: 35%
+        left: 30%
+    @media (max-width: $width-tablet)
+      &:nth-child(1)
+        left: 2%
+        bottom: -20%
+      &:nth-child(2)
+        left: 26%
+        bottom: -3%
       &:nth-child(3)
-        left: 63%
+        left: 60%
         bottom: -20%
       &:nth-child(4)
-        right: 5%
-        bottom: -10%
+        right: 9%
+        bottom: -9%
+      @media (max-width: 980px)
+        &:nth-child(1)
+          left: 0
+        &:nth-child(2)
+          max-width: 230px
+        &:nth-child(3)
+          bottom: -23%
+          left: 55%
+        &:nth-child(4)
+          bottom: -13%
+      @media (max-width: $width-mobile)
+        position: initial
+        max-width: initial
 
 
 
@@ -48,6 +77,8 @@
     font-family: "RussoOne", sans-serif
     //@include fontSize(80, 96)
     @include fontSize(72, 96)
+    @media (max-width: $width-tablet)
+      font-size: 80px
   &-statistics__text
     @include fontSize(16, 22)
     font-weight: 600
