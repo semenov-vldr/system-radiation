@@ -146,34 +146,56 @@ if (values) {
 var TOKEN = "6439049822:AAHuQyECo9HqHDpzRcj9qwrt384oisaNJYY";
 var CHAT_ID = "-1002094796235";
 var URL_API = "https://api.telegram.org/bot".concat(TOKEN, "/sendMessage");
-var form = document.getElementById("feedback");
-if (form) form.addEventListener('submit', function (evt) {
-  return sendMsgTelegram(evt);
-});
-function sendMsgTelegram(evt) {
-  evt.preventDefault();
-  var form = evt.target;
-  var message = "<b>\u0417\u0430\u044F\u0432\u043A\u0430 \u0441 \u0441\u0430\u0439\u0442\u0430 \u041E\u041E\u041E \u0421\u0438\u0441\u0442\u0435\u043C\u0430 - \u0420\u0430\u0434\u0438\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0435 \u043E\u0431\u043E\u0440\u0443\u0434\u043E\u0432\u0430\u043D\u0438\u0435</b>\n";
-  message += "<b>\u0418\u043C\u044F \u043E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u0435\u043B\u044F:</b> ".concat(form.name.value, "\n");
-  message += "<b>\u0422\u0435\u043B\u0435\u0444\u043E\u043D:</b> ".concat(form.phone.value, "\n");
-
-  //message += `<b>Сообщение:</b> ${ this.message.value }\n`;
-
-  axios.post(URL_API, {
-    chat_id: CHAT_ID,
-    parse_mode: 'html',
-    text: message
-  }).then(function () {
-    console.log('Заявка успешно отправлена');
-  })["catch"](function (err) {
-    console.warn(err);
-  })["finally"](function () {
-    console.log('Конец');
+var feedback = document.getElementById("feedback");
+if (feedback) {
+  var submitSuccess = function submitSuccess() {
+    console.log("Success");
+    form.classList.add("hidden");
+    messageSuccess.classList.add("visible");
+    setTimeout(function () {
+      form.classList.remove("hidden");
+      messageSuccess.classList.remove("visible");
+      form.reset();
+    }, 5000);
+  };
+  var submitError = function submitError() {
+    console.log("Error");
+    form.classList.add("hidden");
+    messageError.classList.add("visible");
+    setTimeout(function () {
+      form.classList.remove("hidden");
+      messageError.classList.remove("visible");
+      form.reset();
+    }, 5000);
+  };
+  var sendMsgTelegram = function sendMsgTelegram(evt) {
+    evt.preventDefault();
+    var form = evt.target;
+    var message = "<b>\u0417\u0430\u044F\u0432\u043A\u0430 \u0441 \u0441\u0430\u0439\u0442\u0430 \u041E\u041E\u041E \u0421\u0438\u0441\u0442\u0435\u043C\u0430 - \u0420\u0430\u0434\u0438\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0435 \u043E\u0431\u043E\u0440\u0443\u0434\u043E\u0432\u0430\u043D\u0438\u0435</b>\n";
+    message += "<b>\u0418\u043C\u044F \u043E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u0435\u043B\u044F:</b> ".concat(form.name.value, "\n");
+    message += "<b>\u0422\u0435\u043B\u0435\u0444\u043E\u043D:</b> ".concat(form.phone.value, "\n");
+    axios.post(URL_API, {
+      chat_id: CHAT_ID,
+      parse_mode: 'html',
+      text: message
+    }).then(function () {
+      console.log('Заявка успешно отправлена');
+      submitSuccess();
+    })["catch"](function (err) {
+      console.warn(err);
+      submitError();
+    })["finally"](function () {
+      console.log('Конец');
+    });
+  };
+  feedback.addEventListener('submit', function (evt) {
+    return sendMsgTelegram(evt);
   });
-  alert('Заявка отправлена успешно');
-  form.reset();
+  var form = feedback.querySelector(".feedback__form");
+  var messageSuccess = feedback.querySelector(".feedback-message__body-success");
+  var messageError = feedback.querySelector(".feedback-message__body-error");
+  ;
 }
-;
 "use strict";
 
 var mapFooter = document.querySelector('#footer-map');
