@@ -1,40 +1,45 @@
-.feedback
-  position: relative
-  max-width: 360px
+.popup
+  position: fixed
   width: 100%
-  margin: 0 auto
-  color: $white
-  border-left: 1px solid $lightgrey
-  border-right: 1px solid $lightgrey
-  @media (max-width: $width-mobile)
-    border: none
-  @media (min-width: $width-mobile)
-    &::before,
-    &::after
-      content: ""
-      position: absolute
-      background-color: $lightgrey
-      width: 300vw
-      height: 1px
-      left: -300%
-    &::before
-      top: 0
-    &::after
-      bottom: 0
-
+  height: 100%
+  z-index: 100
+  left: 0
+  top: 0
+  right: 0
+  bottom: 0
+  display: flex
+  align-items: center
+  justify-content: center
+  color: $black
+  overflow-y: auto
+  transition: $transition
+  background-color: rgba($black, 0.6)
+  backdrop-filter: blur(3px)
+  opacity: 0
+  visibility: hidden
+  &.js-popup-open
+    opacity: 1
+    visibility: visible
 
   &__container
+    position: relative
     padding: 32px
+    background-color: $white
+    max-width: 360px
+    width: 100%
     @media (max-width: $width-mobile)
-      padding: 0 16px
+      padding: 32px 16px
+
+  &__close
+    position: absolute
+    right: 24px
+    top: 24px
+    svg
+      width: 13px
+      height: 13px
 
   &__title
-    @media (min-width: $width-mobile)
-      text-align: center
-    &.h-line::after
-      display: none
-      @media (max-width: $width-mobile)
-        display: block
+    text-align: center
 
   &__form
     display: flex
@@ -63,7 +68,7 @@
       &::placeholder
         font-variant-numeric: lining-nums
 
-  button
+  &__submit
     font-size: 20px
     padding: 8px
     min-height: 48px
@@ -77,14 +82,20 @@
       font-size: 18px
 
   &-message
-    padding: 32px
-    @media (max-width: $width-mobile)
-      padding: 0 16px
     &__title
       font-family: "RussoOne", sans-serif
-  .feedback-message__body-success,
-  .feedback-message__body-error
+  .popup-message__body-success,
+  .popup-message__body-error
     display: none
     text-align: center
+    position: relative
+    padding: 32px
+    background-color: $white
+    max-width: 360px
+    width: 100%
+    @media (max-width: $width-mobile)
+      padding: 32px 16px
+    @media (max-width: $width-mobile)
+      padding: 32px 16px
     &.visible
       display: block

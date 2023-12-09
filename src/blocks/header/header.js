@@ -15,7 +15,6 @@ if (header) {
   };
 
   burger.addEventListener('click', () => {
-
     header.classList.add(menuActiveClass);
     menu.classList.add(menuActiveClass);
     blockScrollBody();
@@ -26,8 +25,6 @@ if (header) {
   navLinks.forEach(navLink => {
     navLink.addEventListener("click", closeMobileMenu)
   });
-
-  window.addEventListener('scroll', () => scrollHeader (header) );
 
 }
 

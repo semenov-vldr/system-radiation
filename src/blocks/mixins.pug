@@ -18,7 +18,7 @@ mixin productPage(productData)
 
                 .swiper-pagination
 
-                a.button.button.button--accent.product-page__button.product-page__button--mobile(href="#feedback") Заказать
+                button.button.button.button--accent.product-page__button.product-page__button--mobile.popup-open Заказать
 
                 .product-page__content
 
@@ -34,4 +34,4 @@ mixin productPage(productData)
                           each desc in productData.desc
                               p=desc
 
-                        a.button.button--accent.product-page__button.product-page__button--tablet(href="#feedback") Заказать
+                        button.button.button--accent.product-page__button.product-page__button--tablet.popup-open Заказать
