@@ -95,18 +95,6 @@ phoneInputs.forEach(function (input) {
 });
 "use strict";
 
-var previousPosition = document.documentElement.scrollTop;
-function scrollHeader(header) {
-  var currentPosition = document.documentElement.scrollTop;
-  if (previousPosition > currentPosition || window.scrollY < 100) {
-    header.classList.remove('js-scroll');
-  } else {
-    header.classList.add('js-scroll');
-  }
-  previousPosition = currentPosition;
-}
-"use strict";
-
 var time = 1000; // ms
 var step = 1;
 function outNum(num, elem) {
@@ -142,30 +130,23 @@ if (values) {
 "use strict";
 
 // Подключен axios.min.js в шаблоне
-
 var TOKEN = "6439049822:AAHuQyECo9HqHDpzRcj9qwrt384oisaNJYY";
 var CHAT_ID = "-1002094796235";
 var URL_API = "https://api.telegram.org/bot".concat(TOKEN, "/sendMessage");
 var feedback = document.getElementById("feedback");
 if (feedback) {
-  var submitSuccess = function submitSuccess() {
-    console.log("Success");
-    form.classList.add("hidden");
-    messageSuccess.classList.add("visible");
+  var submitQuestion = function submitQuestion() {
+    var submit = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+    var feedbackContainer = feedback.querySelector(".feedback__container");
+    var messageSuccess = feedback.querySelector(".body-success");
+    var messageError = feedback.querySelector(".body-error");
+    var alert;
+    submit ? alert = messageSuccess : alert = messageError;
+    feedbackContainer.classList.add("hidden");
+    alert.classList.add("visible");
     setTimeout(function () {
-      form.classList.remove("hidden");
-      messageSuccess.classList.remove("visible");
-      form.reset();
-    }, 5000);
-  };
-  var submitError = function submitError() {
-    console.log("Error");
-    form.classList.add("hidden");
-    messageError.classList.add("visible");
-    setTimeout(function () {
-      form.classList.remove("hidden");
-      messageError.classList.remove("visible");
-      form.reset();
+      feedbackContainer.classList.remove("hidden");
+      alert.classList.remove("visible");
     }, 5000);
   };
   var sendMsgTelegram = function sendMsgTelegram(evt) {
@@ -179,21 +160,15 @@ if (feedback) {
       parse_mode: 'html',
       text: message
     }).then(function () {
-      console.log('Заявка успешно отправлена');
-      submitSuccess();
+      submitQuestion();
     })["catch"](function (err) {
       console.warn(err);
-      submitError();
-    })["finally"](function () {
-      console.log('Конец');
+      submitQuestion(false);
     });
+    form.reset();
   };
-  feedback.addEventListener('submit', function (evt) {
-    return sendMsgTelegram(evt);
-  });
-  var form = feedback.querySelector(".feedback__form");
-  var messageSuccess = feedback.querySelector(".feedback-message__body-success");
-  var messageError = feedback.querySelector(".feedback-message__body-error");
+  feedback.addEventListener('submit', sendMsgTelegram);
+  ;
   ;
 }
 "use strict";
@@ -246,9 +221,6 @@ if (header) {
   navLinks.forEach(function (navLink) {
     navLink.addEventListener("click", closeMobileMenu);
   });
-  window.addEventListener('scroll', function () {
-    return scrollHeader(header);
-  });
 }
 "use strict";
 
@@ -261,6 +233,64 @@ function hideLoader() {
 }
 ;
 if (loader) window.addEventListener('load', hideLoader);
+"use strict";
+
+var popup = document.getElementById("popup");
+if (popup) {
+  var popupClose = function popupClose() {
+    popup.classList.remove("js-popup-open");
+    unblockScrollBody();
+    formPopup.reset();
+  };
+  var submitPopup = function submitPopup() {
+    var submit = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+    var popupContainer = popup.querySelector(".popup__container");
+    var messageSuccess = popup.querySelector(".body-success");
+    var messageError = popup.querySelector(".body-error");
+    var alert;
+    submit ? alert = messageSuccess : alert = messageError;
+    popupContainer.classList.add("hidden");
+    alert.classList.add("visible");
+    setTimeout(function () {
+      alert.classList.remove("visible");
+      popupClose();
+    }, 5000);
+  };
+  var sendMsgTelegram = function sendMsgTelegram(evt) {
+    evt.preventDefault();
+    var form = evt.target;
+    var message = "<b>\u0417\u0430\u044F\u0432\u043A\u0430 \u0441 \u0441\u0430\u0439\u0442\u0430 \u041E\u041E\u041E \u0421\u0438\u0441\u0442\u0435\u043C\u0430 - \u0420\u0430\u0434\u0438\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0435 \u043E\u0431\u043E\u0440\u0443\u0434\u043E\u0432\u0430\u043D\u0438\u0435</b>\n";
+    message += "<b>\u0418\u043C\u044F \u043E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u0435\u043B\u044F:</b> ".concat(form.name.value, "\n");
+    message += "<b>\u0422\u0435\u043B\u0435\u0444\u043E\u043D:</b> ".concat(form.phone.value, "\n");
+    axios.post(URL_API, {
+      chat_id: CHAT_ID,
+      parse_mode: 'html',
+      text: message
+    }).then(function () {
+      submitPopup();
+    })["catch"](function (err) {
+      console.warn(err);
+      submitPopup(false);
+    });
+    form.reset();
+  };
+  popup.addEventListener('submit', sendMsgTelegram);
+  var btnsOpen = document.querySelectorAll(".popup-open");
+  var closePopup = popup.querySelector(".popup__close");
+  var formPopup = popup.querySelector("form");
+  btnsOpen.forEach(function (btnOpen) {
+    btnOpen.addEventListener("click", function () {
+      popup.classList.add("js-popup-open");
+      blockScrollBody();
+    });
+  });
+  closePopup.addEventListener("click", popupClose);
+  document.body.addEventListener('click', function (evt) {
+    if (evt.target === popup) popupClose();
+  });
+  ;
+  ;
+}
 "use strict";
 
 var productPage = document.querySelector('.product-page');
