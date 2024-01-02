@@ -44,13 +44,17 @@ function submitPopup (submit = true) {
   }, 5000);
 };
 
+const productTitle = document.querySelector("h1.product-page__title")?.textContent;
+
 
 function sendMsgTelegram (evt) {
 
   evt.preventDefault();
-  const form = evt.target;
 
-  let message = `<b>Заявка с сайта ООО Система - Радиационное оборудование</b>\n`;
+  const form = evt.target;
+  let message = `<b>Заявка с сайта ООО Система | Радиационное оборудование</b>\n`;
+
+  if (productTitle) message += `<b>Оборудование:</b> ${ productTitle }\n`;
 
   message += `<b>Имя отправителя:</b> ${ form.name.value }\n`;
   message += `<b>Телефон:</b> ${ form.phone.value }\n`;
