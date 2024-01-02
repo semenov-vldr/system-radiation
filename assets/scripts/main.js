@@ -48,7 +48,7 @@ var onPhoneInput = function onPhoneInput(evt) {
     formattedInputValue = firstSymbols + " ";
     if (inputNumbersValue[0] === "8") {
       //phoneInputs[0].setAttribute("pattern", ".{17,}");
-      console.log(phoneInputs[0].getAttribute("pattern"));
+      //console.log(phoneInputs[0].getAttribute("pattern"));
     }
     if (inputNumbersValue.length > 1) {
       formattedInputValue += "(" + inputNumbersValue.slice(1, 4);
@@ -237,6 +237,7 @@ if (loader) window.addEventListener('load', hideLoader);
 
 var popup = document.getElementById("popup");
 if (popup) {
+  var _document$querySelect;
   var popupClose = function popupClose() {
     popup.classList.remove("js-popup-open");
     unblockScrollBody();
@@ -259,7 +260,8 @@ if (popup) {
   var sendMsgTelegram = function sendMsgTelegram(evt) {
     evt.preventDefault();
     var form = evt.target;
-    var message = "<b>\u0417\u0430\u044F\u0432\u043A\u0430 \u0441 \u0441\u0430\u0439\u0442\u0430 \u041E\u041E\u041E \u0421\u0438\u0441\u0442\u0435\u043C\u0430 - \u0420\u0430\u0434\u0438\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0435 \u043E\u0431\u043E\u0440\u0443\u0434\u043E\u0432\u0430\u043D\u0438\u0435</b>\n";
+    var message = "<b>\u0417\u0430\u044F\u0432\u043A\u0430 \u0441 \u0441\u0430\u0439\u0442\u0430 \u041E\u041E\u041E \u0421\u0438\u0441\u0442\u0435\u043C\u0430 | \u0420\u0430\u0434\u0438\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0435 \u043E\u0431\u043E\u0440\u0443\u0434\u043E\u0432\u0430\u043D\u0438\u0435</b>\n";
+    if (productTitle) message += "<b>\u041E\u0431\u043E\u0440\u0443\u0434\u043E\u0432\u0430\u043D\u0438\u0435:</b> ".concat(productTitle, "\n");
     message += "<b>\u0418\u043C\u044F \u043E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u0435\u043B\u044F:</b> ".concat(form.name.value, "\n");
     message += "<b>\u0422\u0435\u043B\u0435\u0444\u043E\u043D:</b> ".concat(form.phone.value, "\n");
     axios.post(URL_API, {
@@ -289,6 +291,7 @@ if (popup) {
     if (evt.target === popup) popupClose();
   });
   ;
+  var productTitle = (_document$querySelect = document.querySelector("h1.product-page__title")) === null || _document$querySelect === void 0 ? void 0 : _document$querySelect.textContent;
   ;
 }
 "use strict";
