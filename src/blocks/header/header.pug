@@ -20,7 +20,15 @@ header.header
                 li.header__nav-item
                     a.header__nav-link(href="#footer") Контакты
 
-        a.header__tel(href="tel:+78126482388" itemprop="telephone" content="+78126482388") +7 (812) 648-23-88
+        a.header__contacts.header__contacts--email(href="mailto:sistem2019@yandex.ru")
+            include ../../img/icons/mail.svg
+            span sistem2019@yandex.ru
+
+        a.header__contacts.header__contacts--tel(href="tel:+78126482388" itemprop="telephone" content="+78126482388")
+            include ../../img/icons/phone.svg
+            span +7 (812) 648-23-88
+
+
 
         button.header__burger
             img(src="./assets/img/icons/burger.svg" alt="Кнопка Меню")
