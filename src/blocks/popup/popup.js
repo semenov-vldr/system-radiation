@@ -58,6 +58,9 @@ function sendMsgTelegram (evt) {
 
   message += `<b>Имя отправителя:</b> ${ form.name.value }\n`;
   message += `<b>Телефон:</b> ${ form.phone.value }\n`;
+  if (form.email.value) {
+    message += `<b>Почта:</b> ${ form.email.value }\n`;
+  }
 
   axios.post(URL_API, {
     chat_id: CHAT_ID,
