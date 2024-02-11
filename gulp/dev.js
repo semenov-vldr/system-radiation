@@ -104,7 +104,7 @@ gulp.task("files:dev", function () {
   return gulp
     .src("./src/files/**/*")
     .pipe(changed("./build/files/"))
-    .pipe(gulp.dest("./build/files/"))
+    .pipe(gulp.dest("./build/assets/files/"))
 });
 
 
