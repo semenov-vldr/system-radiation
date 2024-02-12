@@ -76,9 +76,6 @@
       font-size: 18px
 
   &-message
-    padding: 32px
-    @media (max-width: $width-mobile)
-      padding: 0 16px
     &__title
       font-family: "RussoOne", sans-serif
   .feedback-message__body-success,
@@ -87,3 +84,14 @@
     text-align: center
     &.visible
       display: block
+
+  .body-message
+    padding: 32px
+    @media (max-width: $width-mobile)
+      padding: 0 16px
+
+  &__approve
+    font-size: 12px
+    opacity: 0.5
+    a
+      text-decoration: underline

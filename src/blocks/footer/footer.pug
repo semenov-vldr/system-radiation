@@ -44,9 +44,13 @@ footer.footer.scroll-margin#footer
         .footer__map
             #footer-map
 
+        a.footer__presentation(href="./assets/files/presentation.pdf" target="_blank" download) Презентация
+            include ../../img/icons/download.svg
+
         .footer__copyright
             span © ООО «Система», 2024
-            a.footer__politics(href="./assets/files/privacy-policy.pdf" target="_blank") Политика конфиденциальности
+            a.footer__politics(href="./assets/files/privacy-policy.pdf" target="_blank" download) Политика конфиденциальности
+            a.footer__politics(href="" target="_blank" download) Политика обработки персональных данных
 
 include ../loader/loader
 

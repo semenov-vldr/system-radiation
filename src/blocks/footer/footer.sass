@@ -10,12 +10,12 @@
     display: grid
     justify-content: space-between
     column-gap: 24px
-    grid-template-areas: "nav contacts timetable map" "nav contacts author map" "copyright copyright copyright copyright"
+    grid-template-areas: "nav contacts timetable map" "nav contacts presentation map" "copyright copyright author author"
     @media (max-width: $width-tablet)
-      grid-template-areas: "nav contacts timetable" "nav contacts author" "map map map" "copyright copyright copyright"
+      grid-template-areas: "nav contacts timetable" "nav contacts presentation" "map map map" "copyright copyright author"
       justify-content: initial
     @media (max-width: $width-mobile)
-      grid-template-areas: "nav timetable" "contacts contacts" "map map" "author author" "copyright copyright"
+      grid-template-areas: "nav timetable" "presentation presentation" "contacts contacts" "map map" "author author" "copyright copyright"
       row-gap: 32px
 
   &__title
@@ -77,12 +77,11 @@
     grid-area: author
     display: flex
     flex-direction: column
+    align-self: flex-end
     gap: 4px
     font-size: 12px
-    color: #E5E5E5
     white-space: nowrap
-    @media (max-width: $width-mobile)
-      font-size: 14px
+    opacity: 0.7
     &__item
       display: flex
       align-items: center
@@ -101,7 +100,7 @@
     grid-area: map
     overflow: hidden
     @media (max-width: $width-tablet) and (min-width: $width-mobile)
-      margin-top: 32px
+      margin: 32px 0
 
     #footer-map
       width: 100%
@@ -110,25 +109,25 @@
   &__copyright
     margin-top: 12px
     grid-area: copyright
-    font-size: 12px
+    font-size: 10px
     display: flex
     gap: 8px
+    flex-direction: column
+    color: rgba($white, 0.7)
     @media (max-width: $width-mobile)
       flex-direction: column
       gap: 8px
   &__politics
-    position: relative
-    display: flex
-    align-items: center
-    gap: 8px
     &:hover
       text-decoration: underline
-    &::before
-      content: "|"
-      display: block
-      font-weight: 500
-      @media (max-width: $width-mobile)
-        display: none
+
+  &__presentation
+    grid-area: presentation
+    display: flex
+    align-items: center
+    gap: 4px
+    font-size: 16px
+    font-weight: 500
 
 
 
